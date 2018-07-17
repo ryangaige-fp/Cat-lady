@@ -46,7 +46,7 @@ function setup() {
                   <h3>Number of Pets:</h3>
                   <p id="${i + "pets"}">${cat.numberOfPets}</p>
                   <button class="btn btn-primary" onclick="petCat(${i})">Pet</button>
-                  <h3 id="status">Status: ${cat.status[0]}</h3>
+                  <h3 id="status">Status: <span id="result">---</span></h3>
               </div>
                   
           `;
@@ -59,10 +59,4 @@ function update(cat, index) {
   document.getElementById(`${index + "pets"}`).innerText = cat.numberOfPets;
 }
 
-// function mood(cat, index) {
-//   var mood = cats.status;
-//   if (mood >= 5) {
-//     document.getElementById("status").innerText = mood;
-//   }
-// }
 setup();
