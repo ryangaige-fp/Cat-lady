@@ -2,25 +2,35 @@ var cat1 = {
   name: "Mr. Snibbly",
   imageUrl:
     "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&h=350",
-  numberOfPets: 0
+  numberOfPets: 0,
+  status: ["Happy", "Annoyed", "Mad", "Biting"]
 };
 
 var cat2 = {
   name: "Grumpy cat",
   imageUrl:
     "https://pbs.twimg.com/profile_images/948294484596375552/RyGNqDEM_400x400.jpg",
-  numberOfPets: 11000
+  numberOfPets: 0,
+  status: ["Happy", "Annoyed", "Mad", "Biting"]
+};
+var cat3 = {
+  name: "Smalls",
+  imageUrl:
+    "https://www.readersdigest.ca/wp-content/uploads/2011/01/4-ways-cheer-up-depressed-cat.jpg",
+  numberOfPets: 0,
+  status: ["Happy", "Annoyed", "Mad", "Biting"]
 };
 
 var cats = [];
 cats.push(cat1);
 cats.push(cat2);
+cats.push(cat3);
 
 function petCat(index) {
   var cat = cats[index];
   cat.numberOfPets++;
 
-  update(index);
+  update(cat, index);
 }
 
 function setup() {
@@ -36,6 +46,7 @@ function setup() {
                   <h3>Number of Pets:</h3>
                   <p id="${i + "pets"}">${cat.numberOfPets}</p>
                   <button class="btn btn-primary" onclick="petCat(${i})">Pet</button>
+                  <h3 id="status">Status: ${cat.status[0]}</h3>
               </div>
                   
           `;
@@ -44,20 +55,14 @@ function setup() {
   catsElem.innerHTML = template;
 }
 
-function update(index) {
-  document.getElementById(`${index + "pets"}`).innerText =
-    cat[index].numberOfPets;
+function update(cat, index) {
+  document.getElementById(`${index + "pets"}`).innerText = cat.numberOfPets;
 }
 
+// function mood(cat, index) {
+//   var mood = cats.status;
+//   if (mood >= 5) {
+//     document.getElementById("status").innerText = mood;
+//   }
+// }
 setup();
-
-{
-  /* <div class="col-4">
-    <h1>Mr. Snibbly</h1>
-    <img src="https://pbs.twimg.com/profile_images/948294484596375552/RyGNqDEM_400x400.jpg" alt="">
-        <h3>Number of Pets:</h3>
-        <p id="pets">0</p>
-        <button class="btn btn-primary" onclick="petCat()">Pet</button>
-
-            </div> */
-}
