@@ -59,4 +59,13 @@ function update(cat, index) {
   document.getElementById(`${index + "pets"}`).innerText = cat.numberOfPets;
 }
 
+// function status() {
+//   var mood = petCat;
+//   count;
+
+//   if (mood >= 5) {
+//     document.getElementById("result").innerText = cat.status[1];
+//   }
+// }
+
 setup();
