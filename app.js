@@ -1,5 +1,5 @@
 var moods = ["Happy", "Annoyed", "Mad", "Biting"];
-var weight = ["skinny", "Normal", "OverWeight", "Fat"];
+// var weight = ["skinny", "Normal", "OverWeight", "Fat"];
 
 // var cat1 = {
 //   name: "Mr. Snibbly",
@@ -24,38 +24,38 @@ var weight = ["skinny", "Normal", "OverWeight", "Fat"];
 //   mood: moods[2]
 // };
 
-//only function that is capital starting.
+//a custructor function,  only function that is capital starting.
 function Cat(name, imageUrl) {
   this.name = name;
   this.imageUrl = imageUrl;
   this.numberOfPets = 0;
   this.mood = moods[0];
-  this.weight = weight[0];
+  // this.weight = weight[0];
 }
 
-function Treat(flavor) {
-  this.flavor = flavor;
-}
+// function Treat(flavor) {
+//   this.flavor = flavor;
+// }
 
-var cat1 = new Cat(
-  "Mr. Snibbly",
-  "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&h=350"
-);
+// var cat1 = new Cat(
+//   "Mr. Snibbly",
+//   "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&h=350"
+// );
 
-var cat2 = new Cat(
-  "Grumpy cat",
-  "https://pbs.twimg.com/profile_images/948294484596375552/RyGNqDEM_400x400.jpg"
-);
+// var cat2 = new Cat(
+//   "Grumpy cat",
+//   "https://pbs.twimg.com/profile_images/948294484596375552/RyGNqDEM_400x400.jpg"
+// );
 
-var cat3 = new Cat(
-  "Smalls",
-  "https://www.readersdigest.ca/wp-content/uploads/2011/01/4-ways-cheer-up-depressed-cat.jpg"
-);
+// var cat3 = new Cat(
+//   "Smalls",
+//   "https://www.readersdigest.ca/wp-content/uploads/2011/01/4-ways-cheer-up-depressed-cat.jpg"
+// );
 
 var cats = [];
-cats.push(cat1);
-cats.push(cat2);
-cats.push(cat3);
+// cats.push(cat1);
+// cats.push(cat2);
+// cats.push(cat3);
 console.log(cats);
 
 function petCat(index) {
@@ -65,7 +65,7 @@ function petCat(index) {
   update(cat, index);
 }
 
-function setup() {
+function draw() {
   var catsElem = document.getElementById("cats");
   var template = "";
 
@@ -79,6 +79,8 @@ function setup() {
                   <img src="${cat.imageUrl}">
                   <h3>Number of Pets:</h3>
                   <p id="${i + "pets"}">${cat.numberOfPets}</p>
+                  <h3>Number of Treats:</h3>
+                  <p id="${i + "treats"}">${cat.numberOfTreats}</p>
                   <button class="btn btn-primary" onclick="petCat(${i})">Pet</button>
                   <button class="btn btn-success" onclick="giveTreat(${i})">Give Treat</button>
                   
@@ -93,13 +95,12 @@ function setup() {
 function giveTreat(index) {
   var cat = cats[index];
   cat.numberOfPets -= 2;
-
   update(cat, index);
 }
 
 function update(cat, index) {
   document.getElementById(`${index + "pets"}`).innerText = cat.numberOfPets;
-
+  document.getElementById(`${index + "treats"}`).innerText = cat.numberOfTreats;
   var mood = "";
 
   if (cat.numberOfPets < 10) {
@@ -117,23 +118,23 @@ function update(cat, index) {
     document.getElementById(`${index + "mood"}`).innerText = "Mood: " + mood;
   }
 
-  var weight = "";
+  // var weight = "";
 
-  if (cat.numberOfPets < 10) {
-    weight = "Skinny";
-  } else if (cat.numberOfPets < 20) {
-    weight = "Normal";
-  } else if (cat.numberOfPets < 30) {
-    weight = "Over Weight";
-  } else {
-    weight = "Fat";
-  }
+  // if (cat.numberOfPets < 10) {
+  //   weight = "Skinny";
+  // } else if (cat.numberOfPets < 20) {
+  //   weight = "Normal";
+  // } else if (cat.numberOfPets < 30) {
+  //   weight = "Over Weight";
+  // } else {
+  //   weight = "Fat";
+  // }
 
-  if (weight != cat.weight) {
-    cat.weight = weight;
-    document.getElementById(`${index + "weight"}`).innerText =
-      "Weight: " + weight;
-  }
+  // if (weight != cat.weight) {
+  //   cat.weight = weight;
+  //   document.getElementById(`${index + "weight"}`).innerText =
+  //     "Weight: " + weight;
+  // }
 }
 
 // function status() {
@@ -145,4 +146,14 @@ function update(cat, index) {
 //   }
 // }
 
-setup();
+function makeCat() {
+  var name = document.getElementById("catName").value;
+  var image = document.getElementById("catImage").value;
+  var cat = new Cat(name, image);
+
+  cats.push(cat);
+
+  draw();
+}
+
+// setup();
